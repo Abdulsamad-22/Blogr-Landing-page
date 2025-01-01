@@ -1,0 +1,391 @@
+body{
+    font-family: "Overpass", serif;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+.hero-section{
+    min-height: 400px;
+    /*background-color: hsl(355, 100%, 74%);*/
+    position: relative;
+    border-radius: 0px 0px 0px 82px;
+    overflow: hidden;
+    padding: 0px 105px;
+}
+
+.header-bg{
+    background-color: hsl(356, 100%, 66%);
+    max-width: 2000px;
+    position: absolute;
+    top: -800px;
+    right: -620px;
+    z-index: -1;
+    /*transform: translate(16%, -37%);
+    maybe add a bg color*/
+}
+
+@media (max-widtth: 37.5rem) {
+    .header-bg{
+        position: absolute;
+        bottom: 0;
+    }
+}
+
+.left-right-nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding-left: 64px;
+    padding-right: 64px;
+}
+
+.logo-nav{
+    display: flex;
+    align-items: start;
+    gap: 20px;
+}
+
+.nav-element{
+    position: relative;
+    color: white;
+    padding: 0px 16px;
+    cursor: pointer;
+}
+
+.nav-element:hover{
+    text-decoration: underline;
+}
+
+.dropDown{
+    position: absolute;
+    top: 58px;
+    background-color: white;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.content{
+    color: rgb(61, 61, 61);
+    cursor: pointer;
+}
+
+.content:hover{
+    color: black;
+}
+
+.arrow-down {
+    transform: rotate(0deg);
+    transition: transform 0.3s;
+}
+
+.arrow-up {
+    transform: rotate(180deg);
+    transition: transform 0.3s;
+}
+
+.logo{
+    width: 52px;
+}
+
+.login-cta{
+    color: white;
+    background-color: transparent;
+    border: none;
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.signup-cta{
+    font-size: 12px;
+    color: hsl(355, 100%, 74%);
+    padding: 10px 12px;
+    border-radius: 18px;
+    min-width: 90px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.5ms, color 0.5ms;
+}
+
+.signup-cta:hover{
+    background-color: hsl(355, 100%, 74%);
+    color: white;
+}
+
+.header-body-container{
+    margin-top: 100px;
+    place-items: center;
+}
+
+.header-text{
+    font-size: 38px;
+    color: white;
+}
+
+.header-desc{
+    color: white;
+}
+
+.start-free-cta, .learn-more-cta{
+    font-size: 12px;
+    color: hsl(355, 100%, 74%);
+    padding: 10px 12px;
+    border-radius: 32px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.5ms, color 0.5ms;
+}
+
+.start-free-cta:hover{
+    background-color: hsl(355, 100%, 74%);
+    color: white;
+}
+
+.learn-more-cta{
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+}
+
+.left-hand-side{
+    max-width: 460px;
+    /*padding-right: 90px;*/
+}
+
+.our-customer-section{
+    position: relative;
+    max-width: 1336px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.whole-section{
+    display: grid;
+    grid-template-columns: 500px 1fr;
+    align-items: center;
+    column-gap: 580px;
+    /*max-width: 1336px;*/
+}
+
+.customer-section-image-container{
+    position: absolute;
+    top: -30px;
+    right: -180px;
+    height: 100%;
+    width: 50%;
+    max-width: 800px;
+}
+
+.customer-section-image{
+    max-width: 700px;
+}
+
+.title{
+    font-size: 32px;
+    color: hsl(207, 13%, 34%);
+    margin-bottom: 0px;
+}
+
+.sub-title{
+    color: hsl(207, 13%, 34%);
+}
+
+.description{
+    font-size: 1rem;
+    line-height: 180%;
+    color: hsl(207, 13%, 34%);
+}
+
+.state-of-infrastructre{
+    display: grid;
+    grid-template-columns: 580px 1fr;
+    align-items: center;
+    /*
+    flex-direction: row;
+    align-items: center;
+    gap: 130px;*/
+    max-width: 1366px;
+    min-height: 300px;
+    background-color: hsl(237, 21%, 43%);
+    position: relative;
+    border-radius: 0px 64px 0px 64px;
+    z-index: 0;
+    margin-top: 194px;
+    /*margin-bottom: 194px;*/
+}
+
+.bg-circles{
+    max-width: 800px;
+    
+    position: absolute;
+    bottom: -100px;
+    left: -180px;
+    z-index: -1;
+    clip-path: inset(405px 0px 100px 0px);
+    height: auto;
+    /*
+    bottom: -260px;
+    left: -190px;
+    z-index: -1;*/
+}
+
+.phone-image{
+    max-width: 400px;
+    /*margin-left: 94px;*/
+    position: absolute;
+    bottom: -75px;
+    left: 100px;
+    z-index: 1;
+}
+
+.text-container{
+    max-width: 550px;
+}
+
+.text-container h1{
+    font-size: 32px;
+    color: hsl(0, 0%, 100%);
+}
+
+.text-container p{
+    font-size: 1rem;
+    line-height: 180%;
+    color: hsl(240, 2%, 79%);
+    max-width: 460px;
+}
+
+.our-services-container{
+    display: grid;
+    grid-template-columns: 500px 400px;
+    column-gap: 87px;
+    align-items: center;
+    /*
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 50px;*/
+    margin-top: 64px;
+    margin-bottom: 64px;
+}
+
+.services-image-container{
+    max-width: 800px;
+    margin-left: -250px;
+}
+
+.laptop-illustration{
+    max-width: 100%;
+}
+
+.services-text-container{
+    min-width: 490px;
+}
+
+.services-text-container h2{
+    color: hsl(207, 13%, 34%);
+}
+
+.services-text-container p{
+    font-size: 1rem;
+    line-height: 180%;
+    color: hsl(207, 13%, 34%);
+}
+
+.footer{
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    height: 200px;
+    gap: 200px;
+    flex-direction: row;
+    background-color: hsl(240, 10%, 16%);
+    padding: 24px 0px;
+    border-radius: 0px 64px 0px 0px;
+}
+
+.footer-links{
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+}
+
+ul{
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.footer-link-group h3 {
+    color: hsl(240, 2%, 79%);
+    margin-top: 0;
+}
+
+.footer-link-group{
+    flex: 1;
+    margin: 0 15px;
+    min-width: 150px;
+}
+
+.footer-link-group li{
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: hsl(240, 2%, 79%);
+    margin: 5px;
+}
+
+/*footer h3, p{
+    color: hsl(240, 2%, 79%);
+}
+
+footer p{
+    font-size: 0.625rem;
+}*/
+
+.links{
+    display: flex;
+    gap: 16px;
+}
+
+.nav-link{
+    font-size: 1rem;
+    color: hsl(0, 0%, 92%);
+    cursor: pointer;
+}
+
+.nav-link span:hover{
+    text-decoration: underline;
+}
+
+.nav-item{
+    position: relative;
+}
+
+.dropdown-content.hidden{
+    display: none;
+}
+
+.dropdown-content{
+    position: absolute;
+    padding: 0.75rem;
+    border-radius: 8px;
+    min-width: 100px;
+    top: 45px;
+    left: 0;
+    background-color: rgb(250, 250, 250);
+    box-shadow: 0 6px 10px #5e5d5d;
+}
+
+.dropdown-content p{
+    font-size: 1rem;
+    color: rgb(87, 84, 84);
+    cursor: pointer;
+}
+
+.dropdown-content p:hover{
+    color: black;
+}
