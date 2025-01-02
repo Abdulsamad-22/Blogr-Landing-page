@@ -37,7 +37,7 @@ export const blogrLandingPage = {
             cta2: 'Sign up'
         },
 
-        title: 'A modern publishing platform',
+        title: 'A Modern Publishing Platform',
         subTitle: 'Grow your audience and build your online brand',
         buttonText: {
             button1: 'Start for Free',

@@ -1,4 +1,4 @@
-import { blogrLandingPage } from "../data.js";
+import { blogrLandingPage } from "./data.js";
 
 let heroSection = document.querySelector('.header-body-container');
 console.log(heroSection);
@@ -25,47 +25,15 @@ console.log(heroSection);
 
 
     heroSection.innerHTML = html;
-
-    /*const { services, text, icon, content } = blogrLandingPage.hero.nav;
-
-    // For nav bar
-    let element = '';
-
-    services.forEach(nav => {
-        element += `
-            <div class="nav-element">
-             ${nav.text}
-              <img class="arrow-down" src="${nav.icon}" alt="arrow down">
-            </div>
-        `;
-    });
-    document.querySelector('.links').innerHTML = element;*/
-
-    /*document.querySelector('.nav-element').forEach((button, index)  => {
-        button.addEventListener('click', () => {
-            if (index === 0) {
-                const container = document.createElement('div');
-                container.innerHTML = `${content[0]}`;
-                button.appendChild(container);
-            }
-        });
-    });*/
-   
-
-   /*document.querySelector('.links').innerHTML = element;
-
-    const dropDown = document.querySelectorAll('.nav-element');
-    console.log(document.querySelectorAll('.arrow-down'));
-    const logoContainer = document.querySelector('logo-container');
     
-        // Create the logo
-        const logoImg = document.createElement("img");
-        logoImg.src = hero.nav.logo;
-        logoImg.alt = "Logo";
-        navContainer.appendChild(logoImg);*/
-    //let element = '';
-
-    const { services } = blogrLandingPage.hero.nav;
+    
+    const {services} = blogrLandingPage.hero.nav;
+    // Create the logo
+    /*const logoImg = document.createElement("img");
+    logoImg.src = hero.logo;
+    logoImg.alt = "Logo";
+    document.querySelector('.logo-container').appendChild(logoImg);
+    //let element = '';*/
     document.addEventListener("DOMContentLoaded", () => {
     
         // Create the navigation links
@@ -82,6 +50,7 @@ console.log(heroSection);
                 <img class="arrow-down" src="${service.icon}" alt="arrow">
             `;
             navItem.appendChild(navLink);
+            const linksContainer = document.querySelector('.links');
     
             // Create the dropdown content container
             const dropdownContent = document.createElement("div");
@@ -90,7 +59,7 @@ console.log(heroSection);
             dropdownContent.style.display = "none"; // Hidden by default
             navItem.appendChild(dropdownContent);
 
-            document.querySelector('.links').appendChild(navItem);
+            linksContainer.appendChild(navItem);
     
             // Add event listener for toggling dropdown
             navLink.addEventListener("click", () => {
@@ -103,12 +72,8 @@ console.log(heroSection);
                 dropdownContent.style.display = isVisible ? "none" : "block";
                 navLink.querySelector(".arrow-down").classList.toggle("arrow-up", !isVisible);
             });
-            const linksContainer = document.querySelector('.links');
-            if (linksContainer) {
-                linksContainer.appendChild(navItem);
-            }
     
-            //navContainer.appendChild(navItem);
+            //linksContainer.appendChild(navItem);
         });
     });
 
@@ -257,131 +222,161 @@ console.log(heroSection);
     });
     document.querySelector('.footer-links-container').appendChild(footerLinks);
 
-    /*let footerLogoImage = `
-        <img class="logo" src="${blogrLandingPage.footer.image}">
-    `;
+    const leftRightNav = document.querySelector('.left-right-nav');
 
-    document.querySelector('.logo-footer').innerHTML = footerLogoImage;
 
-    console.log(blogrLandingPage.footer);
+    const navLink = document.querySelector('.links');
+    const ctaContainer = document.querySelector('.ctas');
 
-    //let footerLinks = '';
+    const menuButton = document.createElement("div");
+    menuButton.classList.add("menu-button");
+    menuButton.innerHTML = `<img class="" src="images/icon-hamburger.svg" alt="menu icon">`;
 
-    blogrLandingPage.footer.links.forEach(element => {
-        footerLinks += `
-            <h3>
-            ${element.heading}
-            </h3>
+    let isMenuOpen = false;
 
-            <p>
-                ${element.type1}
-            </p>
+    menuButton.addEventListener('click', () => {
+        const menu = document.createElement('div');
+        menu.classList.add('menu');
+        if (!isMenuOpen) {
+            menuButton.innerHTML = `<img src="images/icon-close.svg" alt="close icon">`;
+
+            services.forEach((service) => {
+                const navItem = document.createElement("div");
+                navItem.classList.add("nav-item");
+                navItem.style.position = "relative";
     
-            <p>
-                ${element.type2}
-            </p>
+                // Create the link with text and icon
+                const navLink = document.createElement("div");
+                navLink.classList.add("nav-link");
+                navLink.innerHTML = `
+                    <span>${service.text}</span>
+                    <img class="arrow-down" src="${service.icon}" alt="arrow">
+                `;
+                navItem.appendChild(navLink);
+                //const linksContainer = document.querySelector('.links');
+        
+                // Create the dropdown content container
+                const dropdownContent = document.createElement("div");
+                dropdownContent.classList.add("dropdown-content");
+                dropdownContent.innerHTML = service.content;
+                dropdownContent.style.display = "none"; // Hidden by default
+                navItem.appendChild(dropdownContent);
     
-            <p>
-                ${element.type3}
-            </p>
+                //menu.appendChild(navItem);
+        
+                // Add event listener for toggling dropdown
+                navLink.addEventListener("click", () => {
+                    const isVisible = dropdownContent.style.display === "block";
+                    document.querySelectorAll(".dropdown-content").forEach(content => {
+                        content.style.display = "none"
+                        //content.previousElementSibling.querySelector(".arrow-down").classList.remove("arrow-up");
+                    });
     
-            <p>
-                ${element.type4}
-            </p>
-    
-            <p>
-                ${element.type5}
-            </p>
-    `;
+                    dropdownContent.style.display = isVisible ? "none" : "block";
+                    navLink.querySelector(".arrow-down").classList.toggle("arrow-up", !isVisible);
+                });
+        
+                menu.appendChild(navItem);
+            });
+
+
+            const ctaContainer = document.createElement('div');
+            ctaContainer.classList.add('cta-container');
+            ctaContainer.innerHTML = `
+                <button class="login-cta">
+                    ${blogrLandingPage.hero.ctaText.cta1}
+                </button>
+                
+                <button class="signup-cta">
+                    ${blogrLandingPage.hero.ctaText.cta2}
+                </button>
+            `;
+            menu.appendChild(ctaContainer);
+
+            //menuButton.appendChild(menu);
+            console.log('create menu');
+            document.querySelector('.menu-container').appendChild(menu);
+            isMenuOpen = true;
+        } else {
+            menuButton.innerHTML = `<img class="" src="images/icon-hamburger.svg" alt="menu icon">`;
+            //menuButton.removeChild(menu);
+            //document.querySelector('.menu-container').remove();
+            isMenuOpen = false;
+            console.log('remove menu');
+        }
     });
 
-    //document.querySelector('.link-footer').innerHTML = footerLinks;*/
 
     const imageBg = document.querySelector('.header-bg');
 
-function resizeWindow() {
-    // Use window.innerWidth instead of window.width
-    if (window.innerWidth <= 600) {
-        // Add check to ensure image element exists
-        if (imageBg) {
-            imageBg.src = 'images/bg-pattern-intro-mobile.svg';
-            //console.log('Changed to mobile background');
-        }
-    } else {
-        if (imageBg) {
-            imageBg.src = 'images/bg-pattern-intro-desktop.svg';
-            //console.log('Changed to desktop background');
+    function resizeWindow() {
+        // Use window.innerWidth instead of window.width
+        if (window.innerWidth <= 600) {
+            if (navLink && ctaContainer) {
+                navLink.style.display = 'none';
+                ctaContainer.style.display = 'none';
+            }
+
+            if (!leftRightNav.contains(menuButton)) {
+                leftRightNav.appendChild(menuButton);
+            }
+
+            if (imageBg) {
+                imageBg.src = 'images/bg-pattern-intro-mobile.svg';
+                //console.log('Changed to mobile background');
+            }
+        } else {
+            if (navLink && ctaContainer) {
+                navLink.style.display = 'block';
+                ctaContainer.style.display = 'block';
+            }
+            if (leftRightNav.contains(menuButton)) {
+                leftRightNav.removeChild(menuButton);
+            }
+
+            if (imageBg) {
+                imageBg.src = 'images/bg-pattern-intro-desktop.svg';
+                //console.log('Changed to desktop background');
+            }
         }
     }
-}
-
-// Check if image element exists before adding event listener
-if (imageBg) {
-    // Run on initial load
-    resizeWindow();
-    
-    // Add debounced resize listener to prevent excessive function calls
-    let resizeTimer;
-    window.addEventListener('resize', () => {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(resizeWindow, 250); // Wait 250ms after last resize event
-    });
-} else {
-    console.error('Background image element not found');
-}
 
 
-/*
+    /*function resizeWindow() {
+        // Use window.innerWidth instead of window.width
+        if (window.innerWidth <= 600) {
+            if (!leftRightNav.querySelector('.new-layout')) {
+                renderMenu();
+                heroSection.innerHTML = '';
+            }
+            // Add check to ensure image element exists
+            if (imageBg) {
+                imageBg.src = 'images/bg-pattern-intro-mobile.svg';
+                //console.log('Changed to mobile background');
+            }
+        } else {
+            if (imageBg) {
+                imageBg.src = 'images/bg-pattern-intro-desktop.svg';
+                //console.log('Changed to desktop background');
+            }
+            if (leftRightNav.innerHTML !== originalContent) {
+                leftRightNav.innerHTML = originalContent;
+                heroSection.innerHTML = html;
+            }
+        }
+    }*/
 
-let heroHTML = 
-    `
-        <div class="header-bg-container">
-            <img class="header-bg" src="${blogrLandingPage.hero.bgImage}" alt="header background">
-        </div>
-
-        <div class="left-right-nav">
-            <div class="logo-nav">
-            <div class="logo-container">
-                <img class="logo" src="${blogrLandingPage.hero.nav.image}" alt="logo image">
-            </div>
+    // Check if image element exists before adding event listener
+    if (imageBg) {
+        // Run on initial load
+        resizeWindow();
         
-            <nav>
-                ${element}
-            </nav>
-            </div>
-    
-            <div class="ctas">
-            <button class="login-cta">
-                ${blogrLandingPage.hero.ctaText.cta1}
-            </button>
-            
-            <button class="signup-cta">
-                ${blogrLandingPage.hero.ctaText.cta2}
-            </button>
-            </div>
-        </div>
-
-        <div class="header-body-container">
-            <h1 class="header-text">
-                ${hero.title}
-            </h1>
-    
-            <p class="header-desc">  
-                ${hero.subTitle}
-            </p>
-    
-            <div class="header-btns-container">     
-            <button class="start-free-cta">
-                ${hero.buttonText.button1}
-            </button>
-    
-            <button class="learn-more-cta">
-                ${hero.buttonText.button2}
-            </button>
-            </div>
-        </div>
-
-    `;
-
-    heroSection.innerHTML = heroHTML;
-    */
+        // Add debounced resize listener to prevent excessive function calls
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(resizeWindow, 250); // Wait 250ms after last resize event
+        });
+    } else {
+        //console.error('Background image element not found');
+    }
