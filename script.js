@@ -79,7 +79,7 @@ console.log(heroSection);
 
     // For login and sign up buttons
 
-    let cta = `
+    const cta = `
         <button class="login-cta">
              ${blogrLandingPage.hero.ctaText.cta1}
           </button>
@@ -235,9 +235,15 @@ console.log(heroSection);
     let isMenuOpen = false;
 
     menuButton.addEventListener('click', () => {
-        const menu = document.createElement('div');
-        menu.classList.add('menu');
+        const existingMenu = document.querySelector('.menu');
+        if (existingMenu) {
+            existingMenu.remove();
+        }
+        
         if (!isMenuOpen) {
+            const menu = document.createElement('div');
+            menu.classList.add('menu');
+
             menuButton.innerHTML = `<img src="images/icon-close.svg" alt="close icon">`;
 
             services.forEach((service) => {
@@ -269,7 +275,6 @@ console.log(heroSection);
                     const isVisible = dropdownContent.style.display === "block";
                     document.querySelectorAll(".dropdown-content").forEach(content => {
                         content.style.display = "none"
-                        //content.previousElementSibling.querySelector(".arrow-down").classList.remove("arrow-up");
                     });
     
                     dropdownContent.style.display = isVisible ? "none" : "block";
@@ -293,14 +298,12 @@ console.log(heroSection);
             `;
             menu.appendChild(ctaContainer);
 
-            //menuButton.appendChild(menu);
             console.log('create menu');
             document.querySelector('.menu-container').appendChild(menu);
             isMenuOpen = true;
         } else {
             menuButton.innerHTML = `<img class="" src="images/icon-hamburger.svg" alt="menu icon">`;
-            //menuButton.removeChild(menu);
-            //document.querySelector('.menu-container').remove();
+
             isMenuOpen = false;
             console.log('remove menu');
         }
@@ -308,6 +311,8 @@ console.log(heroSection);
 
 
     const imageBg = document.querySelector('.header-bg');
+    const editorImage = document.querySelector('.customer-section-image');
+    const laptopImage = document.querySelector('.laptop-illustration');
 
     function resizeWindow() {
         // Use window.innerWidth instead of window.width
@@ -321,8 +326,10 @@ console.log(heroSection);
                 leftRightNav.appendChild(menuButton);
             }
 
-            if (imageBg) {
+            if (imageBg && editorImage && laptopImage) {
                 imageBg.src = 'images/bg-pattern-intro-mobile.svg';
+                editorImage.src = 'images/illustration-editor-mobile.svg';
+                laptopImage.src = 'images/illustration-laptop-mobile.svg';
                 //console.log('Changed to mobile background');
             }
         } else {
@@ -334,8 +341,10 @@ console.log(heroSection);
                 leftRightNav.removeChild(menuButton);
             }
 
-            if (imageBg) {
+            if (imageBg && editorImage && laptopImage) {
                 imageBg.src = 'images/bg-pattern-intro-desktop.svg';
+                editorImage.src = 'images/illustration-editor-desktop.svg';
+                laptopImage.src = 'images/illustration-laptop-desktop.svg';
                 //console.log('Changed to desktop background');
             }
         }
