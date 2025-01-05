@@ -4,7 +4,8 @@ export const blogrLandingPage = {
             logo: 'images/logo.svg',
             services: [{
                 text: 'Product',
-                icon: 'images/icon-arrow-dark.svg',
+                icon: 'images/icon-arrow-light.svg',
+                iconDark: 'images/icon-arrow-dark.svg',
                 content: `
                     <p>Overview</p>
                     <p>Pricing</p>
@@ -15,6 +16,7 @@ export const blogrLandingPage = {
             }, {
                 text: 'Company',
                 icon: 'images/icon-arrow-light.svg',
+                iconDark: 'images/icon-arrow-dark.svg',
                 content: `
                     <p>About Us</p>
                     <p>Careers</p>
@@ -24,6 +26,7 @@ export const blogrLandingPage = {
             }, {
                 text: 'Connect',
                 icon: 'images/icon-arrow-light.svg',
+                iconDark: 'images/icon-arrow-dark.svg',
                 content: `
                     <p>Contact</p>
                     <p>Newsletter</p>

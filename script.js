@@ -3,7 +3,7 @@ import { blogrLandingPage } from "./data.js";
 let heroSection = document.querySelector('.header-body-container');
 console.log(heroSection);
 
-    let html = `
+    const html = `
             <h1 class="header-text">
             ${blogrLandingPage.hero.title}
             </h1>
@@ -38,12 +38,12 @@ console.log(heroSection);
     
         // Create the navigation links
         services.forEach((service) => {
-            const navItem = document.createElement("div");
+            const navItem = document.createElement("span");
             navItem.classList.add("nav-item");
             navItem.style.position = "relative";
 
             // Create the link with text and icon
-            const navLink = document.createElement("div");
+            const navLink = document.createElement("span");
             navLink.classList.add("nav-link");
             navLink.innerHTML = `
                 <span>${service.text}</span>
@@ -93,7 +93,7 @@ console.log(heroSection);
 
     // For the "our customer section"
 
-    let section1 = `
+    const section1 = `
      
       <h2 class="title">
         ${blogrLandingPage.features.heading}
@@ -135,7 +135,7 @@ console.log(heroSection);
 
     // For section 2
 
-    let section2 = `
+    const section2 = `
         <div class="bg-phone-images">
         <img class="phone-image" src="${blogrLandingPage.section2.image}" alt="phoneimage">
 
@@ -143,9 +143,9 @@ console.log(heroSection);
         </div>
 
         <div class="text-container">
-            <h1>
+            <h2>
                 ${blogrLandingPage.section2.title}
-            </h1>
+            </h2>
 
             <p>
                 ${blogrLandingPage.section2.description}
@@ -157,7 +157,7 @@ console.log(heroSection);
 
     // For our services section
 
-    let section3 = `
+    const section3 = `
         <div class="services-image-container">
             <img class="laptop-illustration" src="${blogrLandingPage.section3.image}" alt="laptop illustration">
         </div>
@@ -225,13 +225,13 @@ console.log(heroSection);
     const leftRightNav = document.querySelector('.left-right-nav');
 
 
-    const navLink = document.querySelector('.links');
+    /*const navLink = document.querySelector('.links');
     const ctaContainer = document.querySelector('.ctas');
+   */
 
     const menuButton = document.createElement("div");
     menuButton.classList.add("menu-button");
     menuButton.innerHTML = `<img class="" src="images/icon-hamburger.svg" alt="menu icon">`;
-
     let isMenuOpen = false;
 
     menuButton.addEventListener('click', () => {
@@ -247,19 +247,18 @@ console.log(heroSection);
             menuButton.innerHTML = `<img src="images/icon-close.svg" alt="close icon">`;
 
             services.forEach((service) => {
-                const navItem = document.createElement("div");
+                const navItem = document.createElement("ul");
                 navItem.classList.add("nav-item");
                 navItem.style.position = "relative";
     
                 // Create the link with text and icon
-                const navLink = document.createElement("div");
+                const navLink = document.createElement("span");
                 navLink.classList.add("nav-link");
                 navLink.innerHTML = `
                     <span>${service.text}</span>
-                    <img class="arrow-down" src="${service.icon}" alt="arrow">
+                    <img class="arrow-down" src="${service.iconDark}" alt="arrow">
                 `;
                 navItem.appendChild(navLink);
-                //const linksContainer = document.querySelector('.links');
         
                 // Create the dropdown content container
                 const dropdownContent = document.createElement("div");
@@ -283,6 +282,10 @@ console.log(heroSection);
         
                 menu.appendChild(navItem);
             });
+
+            const divider = document.createElement('hr');
+            divider.classList.add('divider');
+            menu.appendChild(divider);
 
 
             const ctaContainer = document.createElement('div');
@@ -315,6 +318,8 @@ console.log(heroSection);
     const laptopImage = document.querySelector('.laptop-illustration');
 
     function resizeWindow() {
+        const navLink = document.querySelector('.links');
+        const ctaContainer = document.querySelector('.ctas');
         // Use window.innerWidth instead of window.width
         if (window.innerWidth <= 600) {
             if (navLink && ctaContainer) {
