@@ -2,101 +2,111 @@ import { blogrLandingPage } from "./data.js";
 
 let heroSection = document.querySelector('.header-body-container');
 console.log(heroSection);
+const {title, subTitle, ctaText, buttonText} = blogrLandingPage.hero;
 
     const html = `
             <h1 class="header-text">
-            ${blogrLandingPage.hero.title}
+            ${title}
             </h1>
     
             <p class="header-desc">  
-            ${blogrLandingPage.hero.subTitle}
+            ${subTitle}
             </p>
 
             <div class="header-btns-container">     
             <button class="start-free-cta">
-                ${blogrLandingPage.hero.buttonText.button1}
+                ${buttonText.button1}
             </button>
     
             <button class="learn-more-cta">
-            ${blogrLandingPage.hero.buttonText.button2}
+            ${buttonText.button2}
             </button>
             </div>
     `;
 
 
     heroSection.innerHTML = html;
-    
-    
     const {services} = blogrLandingPage.hero.nav;
-    // Create the logo
-    /*const logoImg = document.createElement("img");
-    logoImg.src = hero.logo;
-    logoImg.alt = "Logo";
-    document.querySelector('.logo-container').appendChild(logoImg);
-    //let element = '';*/
-    document.addEventListener("DOMContentLoaded", () => {
-    
-        // Create the navigation links
-        services.forEach((service) => {
-            const navItem = document.createElement("span");
-            navItem.classList.add("nav-item");
-            navItem.style.position = "relative";
 
-            // Create the link with text and icon
-            const navLink = document.createElement("span");
-            navLink.classList.add("nav-link");
-            navLink.innerHTML = `
-                <span>${service.text}</span>
-                <img class="arrow-down" src="${service.icon}" alt="arrow">
-            `;
-            navItem.appendChild(navLink);
-            const linksContainer = document.querySelector('.links');
-    
-            // Create the dropdown content container
-            const dropdownContent = document.createElement("div");
-            dropdownContent.classList.add("dropdown-content");
-            dropdownContent.innerHTML = service.content;
-            dropdownContent.style.display = "none"; // Hidden by default
-            navItem.appendChild(dropdownContent);
+    function renderNavLink(containerSelector) {
+        document.addEventListener("DOMContentLoaded", () => {
+            const container = document.querySelector(containerSelector);
+            if (!container) {
+                console.error(`Container "${containerSelector}" not found.`);
+                return;
+            }
+        
+            // Create the navigation links
+            services.forEach((service) => {
+                const navItem = document.createElement("span");
+                navItem.classList.add("nav-item");
+                navItem.style.position = "relative";
 
-            linksContainer.appendChild(navItem);
-    
-            // Add event listener for toggling dropdown
-            navLink.addEventListener("click", () => {
-                const isVisible = dropdownContent.style.display === "block";
-                document.querySelectorAll(".dropdown-content").forEach(content => {
-                    content.style.display = "none"
-                    //content.previousElementSibling.querySelector(".arrow-down").classList.remove("arrow-up");
+                // Create the link with text and icon
+                const navLink = document.createElement("span");
+                navLink.classList.add("nav-link");
+                navLink.innerHTML = `
+                    <span>${service.text}</span>
+                    <img class="arrow-down" src="${service.icon}" alt="arrow">
+                `;
+                navItem.appendChild(navLink);
+                //const linksContainer = document.querySelector('.links');
+        
+                // Create the dropdown content container
+                const dropdownContent = document.createElement("div");
+                dropdownContent.classList.add("dropdown-content");
+                dropdownContent.innerHTML = service.content;
+                dropdownContent.style.display = "none"; // Hidden by default
+                navItem.appendChild(dropdownContent);
+
+                container.appendChild(navItem);
+        
+                // Add event listener for toggling dropdown
+                navLink.addEventListener("click", () => {
+                    const isVisible = dropdownContent.style.display === "block";
+                    document.querySelectorAll(".dropdown-content").forEach(content => {
+                        content.style.display = "none"
+                        //content.previousElementSibling.querySelector(".arrow-down").classList.remove("arrow-up");
+                    });
+
+                    dropdownContent.style.display = isVisible ? "none" : "block";
+                    navLink.querySelector(".arrow-down").classList.toggle("arrow-up", !isVisible);
                 });
-
-                dropdownContent.style.display = isVisible ? "none" : "block";
-                navLink.querySelector(".arrow-down").classList.toggle("arrow-up", !isVisible);
+                
+                //linksContainer.appendChild(navItem);
             });
-    
-            //linksContainer.appendChild(navItem);
         });
-    });
+    }
 
-    // For login and sign up buttons
+    //const linksContainer = document.querySelector('.links');
 
-    const cta = `
+    console.log(renderNavLink('.links'));
+
+    // Render header buttons
+    function headerButtons() {
+        const cta = `
         <button class="login-cta">
-             ${blogrLandingPage.hero.ctaText.cta1}
+             ${ctaText.cta1}
           </button>
           
           <button class="signup-cta">
-            ${blogrLandingPage.hero.ctaText.cta2}
+            ${ctaText.cta2}
           </button>
     `;
 
     document.querySelector('.ctas').innerHTML = cta;
+    }
+
+    headerButtons();
 
     // For the "our customer section"
+
+    const {features, section2, section3} = blogrLandingPage;
 
     const section1 = `
      
       <h2 class="title">
-        ${blogrLandingPage.features.heading}
+        ${features.heading}
       </h2>
 
       <div class="whole-section">
@@ -104,28 +114,28 @@ console.log(heroSection);
           <div class="editor-container">
     
             <h2 class="sub-title">
-                ${blogrLandingPage.features.text.title1}
+                ${features.text.title1}
             </h2>
     
             <p class="description">
-                ${blogrLandingPage.features.text.description1}
+                ${features.text.description1}
             </p>
           </div>
     
           <div class="management">
             <h2 class="sub-title">
-                ${blogrLandingPage.features.text.title2}
+                ${features.text.title2}
             </h2>
     
             <p class="description">
-                ${blogrLandingPage.features.text.description2}
+                ${features.text.description2}
             </p>
           </div>
         </div>
 
         <div class="customer-section-image-container">
           
-          <img class="customer-section-image" src="${blogrLandingPage.features.image}" alt="illustration">
+          <img class="customer-section-image" src="${features.image}" alt="illustration">
         </div>
 
       </div>
@@ -135,58 +145,58 @@ console.log(heroSection);
 
     // For section 2
 
-    const section2 = `
+    const section2Container = `
         <div class="bg-phone-images">
-        <img class="phone-image" src="${blogrLandingPage.section2.image}" alt="phoneimage">
+        <img class="phone-image" src="${section2.image}" alt="phoneimage">
 
-            <img class="bg-circles" src="${blogrLandingPage.section2.bgImage}" alt="background circles">
+            <img class="bg-circles" src="${section2.bgImage}" alt="background circles">
         </div>
 
         <div class="text-container">
             <h2>
-                ${blogrLandingPage.section2.title}
+                ${section2.title}
             </h2>
 
             <p>
-                ${blogrLandingPage.section2.description}
+                ${section2.description}
             </p>
         </div>
     `;
 
-    document.querySelector('.state-of-infrastructre').innerHTML = section2;
+    document.querySelector('.state-of-infrastructre').innerHTML = section2Container;
 
-    // For our services section
+    // Render our services section
 
-    const section3 = `
+    const section3Container = `
         <div class="services-image-container">
-            <img class="laptop-illustration" src="${blogrLandingPage.section3.image}" alt="laptop illustration">
+            <img class="laptop-illustration" src="${section3.image}" alt="laptop illustration">
         </div>
 
         <div class="services-text-container">
             <h2>
-                ${blogrLandingPage.section3.text.title1}
+                ${section3.text.title1}
             </h2>
 
             <p class="ourServices-desc">
-                ${blogrLandingPage.section3.text.description1}
+                ${section3.text.description1}
             </p>
 
             <h2>
-                ${blogrLandingPage.section3.text.title2}
+                ${section3.text.title2}
             </h2>
 
             <p class="ourServices-desc">
-                ${blogrLandingPage.section3.text.description2}
+                ${section3.text.description2}
             </p>
         </div>
     `;
 
-    document.querySelector('.our-services-container').innerHTML = section3;
+    document.querySelector('.our-services-container').innerHTML = section3Container;
 
-    // For footer contact links
+    // Render footer contact links
     const footerContainer = document.createElement("footer");
     footerContainer.classList.add("footer");
-    const { image, links } = blogrLandingPage.footer;
+    const {image, links} = blogrLandingPage.footer;
 
     const footerLogo = document.createElement("div");
     footerLogo.classList.add("footer-logo");
@@ -246,6 +256,8 @@ console.log(heroSection);
 
             menuButton.innerHTML = `<img src="images/icon-close.svg" alt="close icon">`;
 
+            //console.log(renderNavLink('.menu'));
+
             services.forEach((service) => {
                 const navItem = document.createElement("ul");
                 navItem.classList.add("nav-item");
@@ -292,11 +304,11 @@ console.log(heroSection);
             ctaContainer.classList.add('cta-container');
             ctaContainer.innerHTML = `
                 <button class="login-cta">
-                    ${blogrLandingPage.hero.ctaText.cta1}
+                    ${ctaText.cta1}
                 </button>
                 
                 <button class="signup-cta">
-                    ${blogrLandingPage.hero.ctaText.cta2}
+                    ${ctaText.cta2}
                 </button>
             `;
             menu.appendChild(ctaContainer);
@@ -320,7 +332,7 @@ console.log(heroSection);
     function resizeWindow() {
         const navLink = document.querySelector('.links');
         const ctaContainer = document.querySelector('.ctas');
-        // Use window.innerWidth instead of window.width
+
         if (window.innerWidth <= 600) {
             if (navLink && ctaContainer) {
                 navLink.style.display = 'none';
@@ -328,7 +340,9 @@ console.log(heroSection);
             }
 
             if (!leftRightNav.contains(menuButton)) {
+                menuButton.innerHTML = `<img class="" src="images/icon-hamburger.svg" alt="menu icon">`;
                 leftRightNav.appendChild(menuButton);
+                isMenuOpen = false;
             }
 
             if (imageBg && editorImage && laptopImage) {
@@ -338,6 +352,12 @@ console.log(heroSection);
                 //console.log('Changed to mobile background');
             }
         } else {
+            const menu = document.querySelector('.menu');
+
+            if (menu) {
+                menu.remove();
+            }
+
             if (navLink && ctaContainer) {
                 navLink.style.display = 'block';
                 ctaContainer.style.display = 'block';

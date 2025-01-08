@@ -19,7 +19,7 @@ body{
 @media (max-width: 37.5rem) {
     .hero-section{
         justify-content: center;
-        min-width: 40%;
+        max-width: 100%;
         min-height: 80vh;
         padding: 0 24px;
         border-radius: 0px 0px 0px 82px;
@@ -36,13 +36,13 @@ body{
     }
 }
 
-@media (max-widtth: 37.5rem) {
+/*@media (max-widtth: 37.5rem) {
     .hero-section{
         position: relative;
         min-height: 200px;
         padding: 0px 0px;
     }
-}
+}*/
 
 .header-bg{
     background-color: hsl(356, 100%, 66%);
@@ -68,14 +68,13 @@ body{
     justify-content: space-between;
     align-items: center;
     margin-top: 20px;
-    padding-left: 64px;
-    padding-right: 64px;
+    padding: 0 64px;
 }
 
 @media (max-width: 37.5rem) {
     .left-right-nav{
-        margin-top: 20px;
-        padding: 0;
+        margin-top: 52px;
+        padding: 0 16px;
         gap: 0px;
         justify-content: space-between;
     }
@@ -111,6 +110,12 @@ body{
     position: relative;
 }
 
+@media (max-width: 37.5rem) {
+    .nav-item{
+        margin-left: 0;
+    }
+}
+
 .dropdown-content.hidden{
     display: none;
 }
@@ -122,16 +127,17 @@ body{
     min-width: 100px;
     top: 45px;
     left: 0;
-    background-color: rgb(250, 250, 250);
+    background-color: hsl(0, 0%, 100%);
     box-shadow: 0 6px 10px #5e5d5d;
 }
 
 @media (max-width: 37.5rem) {
     .dropdown-content{
         place-items: center;
+        padding: 0rem;
         position: static;
         background-color: hsl(0, 0%, 92%);
-        min-width: 200px;
+        min-width: 290px;
         margin-top: 12px;
         box-shadow: 0 0 0;
     }
@@ -143,8 +149,10 @@ body{
     cursor: pointer;
 }
 
-.dropdown-content p:hover{
-    color: black;
+@media (hover:hover) {
+    .dropdown-content p:hover{
+        color: hsl(240, 10%, 16%);
+    }
 }
 
 @media (max-width: 37.5rem) {
@@ -167,6 +175,13 @@ body{
     width: 100px;
 }
 
+@media (max-width: 37.5rem) {
+    .cta-container{
+        display: grid;
+        gap: 20px;
+    }
+}
+
 .login-cta{
     color: white;
     background-color: transparent;
@@ -186,9 +201,11 @@ body{
     transition: background-color 0.5ms, color 0.5ms;
 }
 
-.signup-cta:hover{
-    background-color: hsl(355, 100%, 74%);
-    color: white;
+@media (hover:hover) {
+    .signup-cta:hover{
+        background-color: hsl(355, 100%, 74%);
+        color: white;
+    }
 }
 
 @media (max-width: 37.5rem) {
@@ -200,10 +217,10 @@ body{
     .signup-cta{
         font-size: 1.125rem;
         color: #ffff;
-        padding: 0.875rem;
+        padding: 0.75rem;
         border-radius: 24px;
-        max-width: 200px;
-        background-color: hsl(355, 100%, 74%);
+        min-width: 140px;
+        background-color: hsl(356, 100%, 66%);
     }
 }
 
@@ -276,13 +293,15 @@ body{
 
 .learn-more-cta{
     background-color: transparent;
-    border: 1px solid white;
-    color: white;
+    border: 1px solid hsl(0, 0%, 100%);
+    color: hsl(0, 0%, 100%);
 }
 
-.learn-more-cta:hover{
-    background-color: hsl(0, 0%, 100%);
-    color: hsl(355, 100%, 74%);
+@media (hover:hover) {
+    .learn-more-cta:hover{
+        background-color: #f0f0f0;
+        color: hsl(355, 100%, 74%);
+    }
 }
 
 .left-hand-side{
@@ -304,8 +323,14 @@ body{
     flex-direction: column;
     align-items: center;
     gap: 2rem;
-    margin-top: 50px;
+    margin: 94px 0;
     /*margin-bottom: 50px;*/
+}
+
+@media (max-width: 37.5rem) {
+    .our-customer-section{
+        gap: 60px;
+    }
 }
 
 .whole-section{
@@ -320,6 +345,7 @@ body{
     .whole-section{
         display: flex;
         flex-direction: column-reverse;
+        gap: 20px;
         align-items: center;
         justify-content: center;
     }
@@ -402,7 +428,7 @@ body{
     /*position: relative;*/
     border-radius: 0px 64px 0px 64px;
     z-index: 0;
-    margin-top: 194px;
+    margin: 194px 0 64px 0;
     /*margin-bottom: 194px;*/
 }
 
@@ -453,7 +479,7 @@ body{
         position: absolute;
         top: -320px;
         left: -375px;
-        clip-path: inset(320px 160px 0px 0px);
+        clip-path: inset(0px 0px 0px 0px);
         max-width: 780px;
     }
 }
@@ -597,7 +623,7 @@ body{
     gap: 200px;
     flex-direction: row;
     background-color: hsl(240, 10%, 16%);
-    padding: 24px 0px;
+    padding: 42px 0px;
     border-radius: 0px 64px 0px 0px;
 }
 
@@ -701,9 +727,9 @@ footer p{
 .menu{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-end;
     position: absolute;
-    right: 16%;
+    right: 12%;
     padding: 44px 24px;
     background-color: hsl(0, 0%, 100%);
     border-radius: 6px;
@@ -724,11 +750,4 @@ footer p{
     border: 0.2px solid #dddddd;
     min-width: 100%;
     margin-bottom: 18px;
-}
-
-@media (max-width: 37.5rem) {
-    .cta-container{
-        display: grid;
-        gap: 10px;
-    }
 }
