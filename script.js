@@ -28,13 +28,7 @@ const {title, subTitle, ctaText, buttonText} = blogrLandingPage.hero;
     heroSection.innerHTML = html;
     const {services} = blogrLandingPage.hero.nav;
 
-    function renderNavLink(containerSelector) {
         document.addEventListener("DOMContentLoaded", () => {
-            const container = document.querySelector(containerSelector);
-            if (!container) {
-                console.error(`Container "${containerSelector}" not found.`);
-                return;
-            }
         
             // Create the navigation links
             services.forEach((service) => {
@@ -50,7 +44,7 @@ const {title, subTitle, ctaText, buttonText} = blogrLandingPage.hero;
                     <img class="arrow-down" src="${service.icon}" alt="arrow">
                 `;
                 navItem.appendChild(navLink);
-                //const linksContainer = document.querySelector('.links');
+                const linksContainer = document.querySelector('.links');
         
                 // Create the dropdown content container
                 const dropdownContent = document.createElement("div");
@@ -59,7 +53,7 @@ const {title, subTitle, ctaText, buttonText} = blogrLandingPage.hero;
                 dropdownContent.style.display = "none"; // Hidden by default
                 navItem.appendChild(dropdownContent);
 
-                container.appendChild(navItem);
+                linksContainer.appendChild(navItem);
         
                 // Add event listener for toggling dropdown
                 navLink.addEventListener("click", () => {
@@ -76,14 +70,12 @@ const {title, subTitle, ctaText, buttonText} = blogrLandingPage.hero;
                 //linksContainer.appendChild(navItem);
             });
         });
-    }
 
     //const linksContainer = document.querySelector('.links');
 
-    console.log(renderNavLink('.links'));
+    //console.log(renderNavLink('.links'));
 
     // Render header buttons
-    function headerButtons() {
         const cta = `
         <button class="login-cta">
              ${ctaText.cta1}
@@ -95,50 +87,45 @@ const {title, subTitle, ctaText, buttonText} = blogrLandingPage.hero;
     `;
 
     document.querySelector('.ctas').innerHTML = cta;
-    }
-
-    headerButtons();
 
     // For the "our customer section"
 
     const {features, section2, section3} = blogrLandingPage;
 
     const section1 = `
-     
-      <h2 class="title">
+        <h2 class="title">
         ${features.heading}
-      </h2>
+        </h2>
 
-      <div class="whole-section">
-        <div class="left-hand-side">
-          <div class="editor-container">
-    
-            <h2 class="sub-title">
-                ${features.text.title1}
-            </h2>
-    
-            <p class="description">
-                ${features.text.description1}
-            </p>
-          </div>
-    
-          <div class="management">
-            <h2 class="sub-title">
-                ${features.text.title2}
-            </h2>
-    
-            <p class="description">
-                ${features.text.description2}
-            </p>
-          </div>
-        </div>
+        <div class="whole-section">
+            <div class="left-hand-side">
+            <div class="editor-container">
+        
+                <h2 class="sub-title">
+                    ${features.text.title1}
+                </h2>
+        
+                <p class="description">
+                    ${features.text.description1}
+                </p>
+            </div>
+        
+            <div class="management">
+                <h2 class="sub-title">
+                    ${features.text.title2}
+                </h2>
+        
+                <p class="description">
+                    ${features.text.description2}
+                </p>
+            </div>
+            </div>
 
-        <div class="customer-section-image-container">
-          
-          <img class="customer-section-image" src="${features.image}" alt="illustration">
-        </div>
+            <div class="customer-section-image-container">
+                <img class="customer-section-image" src="${features.image}" alt="illustration">
+            </div>
 
-      </div>
+        </div> 
     `;
 
     document.querySelector('.our-customer-section').innerHTML = section1;
@@ -147,9 +134,11 @@ const {title, subTitle, ctaText, buttonText} = blogrLandingPage.hero;
 
     const section2Container = `
         <div class="bg-phone-images">
-        <img class="phone-image" src="${section2.image}" alt="phoneimage">
+            <div class="container2">
+                <img class="bg-circles" src="${section2.bgImage}" alt="background circles">
+            </div>
 
-            <img class="bg-circles" src="${section2.bgImage}" alt="background circles">
+            <img class="phone-image" src="${section2.image}" alt="phoneimage">
         </div>
 
         <div class="text-container">
@@ -326,14 +315,17 @@ const {title, subTitle, ctaText, buttonText} = blogrLandingPage.hero;
 
 
     const imageBg = document.querySelector('.header-bg');
+    imageBg.classList.add('mobile');
     const editorImage = document.querySelector('.customer-section-image');
     const laptopImage = document.querySelector('.laptop-illustration');
 
     function resizeWindow() {
         const navLink = document.querySelector('.links');
         const ctaContainer = document.querySelector('.ctas');
-
-        if (window.innerWidth <= 600) {
+        //const logoNav = document.querySelector('.logo-nav');
+        console.log('Applying mobile layout...');
+        
+        if (window.innerWidth <= 728) {
             if (navLink && ctaContainer) {
                 navLink.style.display = 'none';
                 ctaContainer.style.display = 'none';
@@ -346,12 +338,14 @@ const {title, subTitle, ctaText, buttonText} = blogrLandingPage.hero;
             }
 
             if (imageBg && editorImage && laptopImage) {
+                console.log('Applying desktop images...');
                 imageBg.src = 'images/bg-pattern-intro-mobile.svg';
                 editorImage.src = 'images/illustration-editor-mobile.svg';
                 laptopImage.src = 'images/illustration-laptop-mobile.svg';
-                //console.log('Changed to mobile background');
+                console.log('Changed to mobile background');
             }
         } else {
+            console.log('Applying desktop layout...');
             const menu = document.querySelector('.menu');
 
             if (menu) {
@@ -362,6 +356,7 @@ const {title, subTitle, ctaText, buttonText} = blogrLandingPage.hero;
                 navLink.style.display = 'block';
                 ctaContainer.style.display = 'block';
             }
+
             if (leftRightNav.contains(menuButton)) {
                 leftRightNav.removeChild(menuButton);
             }
@@ -370,7 +365,7 @@ const {title, subTitle, ctaText, buttonText} = blogrLandingPage.hero;
                 imageBg.src = 'images/bg-pattern-intro-desktop.svg';
                 editorImage.src = 'images/illustration-editor-desktop.svg';
                 laptopImage.src = 'images/illustration-laptop-desktop.svg';
-                //console.log('Changed to desktop background');
+                console.log('Changed to desktop background');
             }
         }
     }
