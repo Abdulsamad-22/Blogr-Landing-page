@@ -71,9 +71,6 @@ const {title, subTitle, ctaText, buttonText} = blogrLandingPage.hero;
             });
         });
 
-    //const linksContainer = document.querySelector('.links');
-
-    //console.log(renderNavLink('.links'));
 
     // Render header buttons
         const cta = `
@@ -322,10 +319,8 @@ const {title, subTitle, ctaText, buttonText} = blogrLandingPage.hero;
     function resizeWindow() {
         const navLink = document.querySelector('.links');
         const ctaContainer = document.querySelector('.ctas');
-        //const logoNav = document.querySelector('.logo-nav');
-        console.log('Applying mobile layout...');
         
-        if (window.innerWidth <= 728) {
+        if (window.innerWidth <= 600) {
             if (navLink && ctaContainer) {
                 navLink.style.display = 'none';
                 ctaContainer.style.display = 'none';
@@ -342,10 +337,9 @@ const {title, subTitle, ctaText, buttonText} = blogrLandingPage.hero;
                 imageBg.src = 'images/bg-pattern-intro-mobile.svg';
                 editorImage.src = 'images/illustration-editor-mobile.svg';
                 laptopImage.src = 'images/illustration-laptop-mobile.svg';
-                console.log('Changed to mobile background');
+                //console.log('Changed to mobile background');
             }
         } else {
-            console.log('Applying desktop layout...');
             const menu = document.querySelector('.menu');
 
             if (menu) {
@@ -365,35 +359,10 @@ const {title, subTitle, ctaText, buttonText} = blogrLandingPage.hero;
                 imageBg.src = 'images/bg-pattern-intro-desktop.svg';
                 editorImage.src = 'images/illustration-editor-desktop.svg';
                 laptopImage.src = 'images/illustration-laptop-desktop.svg';
-                console.log('Changed to desktop background');
+                //console.log('Changed to desktop background');
             }
         }
     }
-
-
-    /*function resizeWindow() {
-        // Use window.innerWidth instead of window.width
-        if (window.innerWidth <= 600) {
-            if (!leftRightNav.querySelector('.new-layout')) {
-                renderMenu();
-                heroSection.innerHTML = '';
-            }
-            // Add check to ensure image element exists
-            if (imageBg) {
-                imageBg.src = 'images/bg-pattern-intro-mobile.svg';
-                //console.log('Changed to mobile background');
-            }
-        } else {
-            if (imageBg) {
-                imageBg.src = 'images/bg-pattern-intro-desktop.svg';
-                //console.log('Changed to desktop background');
-            }
-            if (leftRightNav.innerHTML !== originalContent) {
-                leftRightNav.innerHTML = originalContent;
-                heroSection.innerHTML = html;
-            }
-        }
-    }*/
 
     // Check if image element exists before adding event listener
     if (imageBg) {

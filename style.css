@@ -38,7 +38,7 @@
     justify-content: space-between;
     align-items: center;
     margin-top: 20px;
-    padding: 0 64px;
+    padding: 0 1.5rem;
   }
   
   .logo-nav {
@@ -65,10 +65,6 @@
     margin-left: 10px;
     position: relative;
   }
-  
-  /*.dropdown-content.hidden {
-    display: none;
-  }*/
   
   .dropdown-content {
     position: absolute;
@@ -112,7 +108,7 @@
     color: white;
     background-color: transparent;
     border: none;
-    margin-right: 8px;
+    margin-right: 0.5rem;
     cursor: pointer;
   }
   
@@ -139,7 +135,6 @@
     align-items: center;
     gap: 1.125rem;
     margin-top: 100px;
-    /*place-items: center;*/
   }
   
   .header-text {
@@ -154,7 +149,7 @@
 
   .header-btns-container{
     padding: 0;
-    margin-left: -14%;
+    /* margin-left: -14%; */
   }
   
   .start-free-cta,
@@ -190,7 +185,7 @@
   
   .left-hand-side {
     max-width: 508px;
-    margin-left: 10rem;
+    margin-left: 8rem;
   }
   
   .our-customer-section {
@@ -202,7 +197,6 @@
     gap: 0rem;
     margin: 94px 0;
     overflow: hidden;
-    /*margin-bottom: 50px;*/
   }
   
   .whole-section {
@@ -227,11 +221,12 @@
   .title {
     font-size: 32px;
     color: hsl(207, 13%, 34%);
-    margin-bottom: 0px;
+    margin-bottom: 0;
   }
   
   .sub-title {
     color: hsl(207, 13%, 34%);
+    margin: 1rem 0;
   }
   
   .description {
@@ -243,7 +238,7 @@
   .state-of-infrastructre {
     display: flex;
     align-items: center;
-    height: 100%;
+    height: 80%;
     background-color: hsl(237, 21%, 43%);
     border-radius: 0px 64px 0px 64px;
     margin: 194px 0 64px 0;
@@ -251,70 +246,77 @@
   }
   
   .bg-phone-images {
-    /* position: relative; */
-    height: 100%;
-    /*margin-top: 300px;*/
+    width: 50%;
+    height: 80%;
+  }
+
+  .container2{
+    position: relative;
+    width: 100%;
+    height: 320px;;
+    overflow-y: clip;
   }
   
   .bg-circles {
-    max-width: 800px;
-    z-index: 1;
-    /* clip-path: inset(405px 0px 100px 0px); */
+    position: absolute;
+    top: -158%;
+    left: -28%;
+    width: 140%;
   }
   
   .phone-image {
     position: absolute;
-    z-index: 100;
+    top: -15%;
+    left: 7%;
+    width: 32%;
   }
-  
-  .text-container {
-    max-width: 550px;
+
+  .text-container{
+    max-width: 500px;
   }
   
   .text-container h2 {
     font-size: 2rem;
     color: hsl(0, 0%, 100%);
+    margin-bottom: 1rem;
   }
   
   .text-container p {
     font-size: 1rem;
     line-height: 180%;
     color: hsl(240, 2%, 79%);
-    max-width: 460px;
+    /* max-width: 460px; */
   }
   
   .our-services-container {
-    display: grid;
-    grid-template-columns: 500px 500px;
-    column-gap: 87px;
+    display: flex;
+    flex-direction: row;
+    /* gap: 14.5rem; */
     align-items: center;
-    /*
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: 50px;*/
+    justify-content: center;
     margin-top: 64px;
     margin-bottom: 64px;
   }
   
   .services-image-container {
-    /*position: relative;
-      left: -250px;*/
-    /* min-width: 800px; */
-    margin-left: -250px;
+    width: 60%;
+    margin-right: 0;
+    margin-left: -28rem;
+    margin-right: 9.5rem;
   }
   
   .laptop-illustration {
-    max-width: 100%;
+    width: 100%;
   }
   
   .services-text-container {
-    max-width: 500px;
+    width: 40%;
     padding: 0.75rem 1rem;
   }
   
   .services-text-container h2 {
     color: hsl(207, 13%, 34%);
+    margin: 1rem 0;
   }
   
   .services-text-container p {
@@ -327,7 +329,6 @@
     display: flex;
     align-items: start;
     justify-content: center;
-    height: 200px;
     gap: 200px;
     flex-direction: row;
     background-color: hsl(240, 10%, 16%);
@@ -348,7 +349,7 @@
   
   .footer-link-group h3 {
     color: hsl(0, 0%, 100%);
-    margin-top: 0;
+    margin-bottom: 1rem;
   }
   
   .footer-link-group {
@@ -361,16 +362,8 @@
     font-size: 0.875rem;
     font-weight: 400;
     color: hsl(240, 2%, 79%);
-    margin-bottom: 10px;
+    margin-bottom: 0.75rem;
   }
-  
-  /*footer h3, p{
-      color: hsl(240, 2%, 79%);
-  }
-  
-  footer p{
-      font-size: 0.625rem;
-  }*/
   
   .links {
     display: flex;
@@ -416,20 +409,23 @@
     .header-bg-container {
         position: relative;
         width: 440%;
+        /* height: 400%; */
     }
 
     .header-bg {
       background-color: hsl(356, 100%, 66%);
       width: 100%;
       position: absolute;
+      /* top: -28%;
+      left: -30%; */
       top: -480px;
-      left: -500px;
-      z-index: -1;
+      left: -500px; 
+       z-index: -1;
     }
   
     .left-right-nav {
-      margin-top: 52px;
-      padding: 0 16px;
+      margin-top: 3.25rem;
+      padding: 0 1rem;
       gap: 0px;
       justify-content: space-between;
     }
@@ -447,7 +443,7 @@
   
     .cta-container {
       display: grid;
-      gap: 20px;
+      gap: 1.25rem;
     }
 
     .dropdown-content {
@@ -503,6 +499,7 @@
     .header-btns-container {
       display: flex;
       gap: 20px;
+      margin-left: -14%;
     }
   
     .left-hand-side {
@@ -568,30 +565,29 @@
         overflow: hidden;
         /* width: 100%; */
         height: 280px;
-        /* background-color: burlywood; */
         border-radius: 0 70px 0 0;
     }
   
     .bg-circles {
         position: absolute;
-        top: -390px;
-        left: -150px;
-        /* width: 730px; */
+        /* top: -390px; 
+        left: -150px; */
+        top: -150%;
+        left: -43%;
         width: 200%;
         height: 280%;
-        /* overflow: hidden;  */
-      /* clip-path: inset(190px 70px 0px 0px); */
-      /* max-width: 780px; */
+        /* width: 200%;
+        height: 280%; */
     }
   
     .phone-image {
       width: 70%;
       /* width: 280px; */
       position: absolute;
-      top: -130px;
-      left: 70px;
-      /* top: -48%;
-      left: 15%; */
+      /* top: -130px;
+      left: 70px; */
+      top: -48%;
+      left: 15%;
     }
   
     .text-container {
@@ -621,6 +617,7 @@
     .services-image-container {
       width: 100%;
       margin-left: 0;
+      margin-right: 0;
       margin-bottom: 2rem;
     }
   
@@ -630,7 +627,7 @@
   
     .services-text-container {
       text-align: center;
-      max-width: 335px;
+      width: 80%;
       padding: 0.75rem 1rem;
     }
   
